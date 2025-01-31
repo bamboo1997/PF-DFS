@@ -1,0 +1,63 @@
+custom_seed:
+  value: 317
+
+default:
+  dir_name: outputs
+  device_id: "cuda:0"
+  resource: "local"
+  deterministic: True
+  num_workers: 20
+  DP: True
+  n_gpus: 1
+  epochs: 150
+  r_seed: 317
+  bar: False
+
+network:
+  name: "UNet"
+  encoder: mobilenet_v2
+  loss_func:
+    name: "CE"
+
+dataset:
+  letterbox: True
+  cache: False
+  name: "CamVid"
+  image_size: 480
+  augment:
+    hp:
+      affine_p: 0.5
+      hflip_p: 0.5
+      brightness_p: 0.5
+      cutout_p: 0.5
+
+optimizer:
+  name: "SGD"
+  hp:
+    lr: 0.01
+    momentum: 0.9
+    weight_decay: 1e-4
+    lr_decay: 0.01
+    batch_size: 16
+  scheduler:
+    name: "cosine"
+
+objective:
+  name: dnns
+
+sampler:
+  name: RandomSearch
+  n_trials: 100
+  init_sigma: "small"
+  redefine_popsize: False
+  n_parallel: 1
+  min_budget: 10
+  max_budget: 100
+  pruning: False
+  regression_model: modified_linear
+
+server:
+  host_ip_1: 127
+  host_ip_2: 0
+  host_ip_3: 0
+  host_ip_4: 1

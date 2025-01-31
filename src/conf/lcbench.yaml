@@ -1,0 +1,32 @@
+default:
+  dir_name: outputs
+  resource: local
+  num_workers: 16
+  r_seed: 317
+  epochs: 52
+  nic_name: lo
+  bar: False
+
+server:
+  host_ip_1: 127
+  host_ip_2: 0
+  host_ip_3: 0
+  host_ip_4: 1
+
+objective:
+  name: lcbench
+  instance: "3945"
+  target_name: val_error_rate
+  fidelity_name: "epoch"
+  dir_path: ./hpo_benchmarks
+
+sampler:
+  name: RandomSearch
+  n_trials: 225
+  init_sigma: "small"
+  redefine_popsize: False
+  n_parallel: 1
+  min_budget: 5
+  max_budget: 52
+  pruning: False
+  regression_model: modified_linear

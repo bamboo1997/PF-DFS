@@ -1,0 +1,38 @@
+default:
+  dir_name: outputs
+  resource: local
+  num_workers: 16
+  r_seed: 317
+  epochs: 200
+  nic_name: lo
+  bar: False
+
+server:
+  host_ip_1: 127
+  host_ip_2: 0
+  host_ip_3: 0
+  host_ip_4: 1
+
+objective:
+  name: nb201
+  instance: cifar10
+  target_name: val_error_rate
+  fidelity_name: "epoch"
+  dir_path: ./hpo_benchmarks
+
+sampler:
+  name: RandomSearch
+  n_trials: 200
+  redefine_popsize: False
+  pop_size: 10
+  resampling: True
+  lr: 0.2
+  negative_lr: 0.2
+  mutation_p: 0.02
+  margin: True
+  mutation_shift: 0.05
+  n_parallel: 1
+  min_budget: 22
+  max_budget: 200
+  pruning: False
+  regression_model: modified_linear
