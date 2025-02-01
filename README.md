@@ -79,3 +79,18 @@ If running a configuration file with overwriting settings,
 python src/search.py lcbench sampler.name=CMAES sampler.n_trials=100
 ```
 
+## Citations
+For the citation, use the following format:
+
+```
+@article{takenaga2025,
+   title = {Parameter-free dynamic fidelity selection for automated machine learning},
+   journal = {Applied Soft Computing},
+   pages = {112750},
+   year = {2025},
+   issn = {1568-4946},
+   doi = {https://doi.org/10.1016/j.asoc.2025.112750},
+   url = {https://www.sciencedirect.com/science/article/pii/S1568494625000614},
+   author = {Shintaro Takenaga and Yoshihiko Ozaki and Masaki Onishi},
+}
+```
